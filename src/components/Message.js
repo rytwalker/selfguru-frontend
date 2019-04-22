@@ -3,13 +3,23 @@ import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Message = ({ title, newMessage }) => {
+const Message = ({
+  add,
+  date = new Date(),
+  title,
+  newMessage,
+  totalMessages,
+}) => {
   const [message, setMessage] = useState(title);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date(date));
   const [editMessage, setEditMessage] = useState(false);
 
   function submitMessage(e) {
     e.preventDefault();
+    if (newMessage) {
+      const convertedDate = startDate.getUTCDate;
+      add({ title, date: convertedDate, id: totalMessages++ });
+    }
     console.log(message);
     console.log(startDate);
   }
